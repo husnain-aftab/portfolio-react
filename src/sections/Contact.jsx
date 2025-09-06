@@ -1,41 +1,79 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
+import { Form, Input, Button, message } from "antd";
+import { SendOutlined } from "@ant-design/icons";
+
+const { TextArea } = Input;
 
 export default function Contact() {
-  const [status, setStatus] = useState("");
+  const [form] = Form.useForm();
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onFinish = (values) => {
     // TODO: wire to your API / Formspree / EmailJS
-    setStatus("Thanks! I’ll get back to you soon.");
-    e.target.reset();
+    console.log(values);
+    message.success("Thanks! I'll get back to you soon.");
+    form.resetFields();
   };
 
   return (
-    <section id="contact" className="py-16 flex flex-col items-center">
-      <h2 className="mb-6 text-3xl font-semibold text-center">Contact</h2>
-      <motion.form
-        onSubmit={onSubmit}
+    <section id="contact" className="py-16 container mx-auto px-4">
+      <h2 className="mb-8 text-3xl font-semibold text-center">Get in Touch</h2>
+      <motion.div
         initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="card p-6 max-w-xl w-full space-y-4"
+        className="max-w-xl mx-auto"
       >
-        <div>
-          <label className="block text-sm mb-1">Name</label>
-          <input className="w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2" required />
-        </div>
-        <div>
-          <label className="block text-sm mb-1">Email</label>
-          <input type="email" className="w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2" required />
-        </div>
-        <div>
-          <label className="block text-sm mb-1">Message</label>
-          <textarea rows="4" className="w-full rounded-lg border border-black/10 dark:border-white/10 bg-transparent px-3 py-2" required />
-        </div>
-        <button className="btn-primary rounded-lg" type="submit">Send</button>
-        {status && <p className="text-sm opacity-80 text-center">{status}</p>}
-      </motion.form>
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={onFinish}
+          className="p-8 rounded-lg shadow-md bg-gradient-to-br from-sky-50 to-white dark:from-navy-900 dark:to-navy-800 dark:bg-opacity-90"
+        >
+          <Form.Item
+            name="name"
+            label="Name"
+            rules={[{ required: true, message: "Please enter your name" }]}
+          >
+            <Input size="large" placeholder="Your name" />
+          </Form.Item>
+
+          <Form.Item
+            name="email"
+            label="Email"
+            rules={[
+              { required: true, message: "Please enter your email" },
+              { type: "email", message: "Please enter a valid email" }
+            ]}
+          >
+            <Input size="large" placeholder="your.email@example.com" />
+          </Form.Item>
+
+          <Form.Item
+            name="message"
+            label="Message"
+            rules={[{ required: true, message: "Please enter your message" }]}
+          >
+            <TextArea
+              rows={4}
+              size="large"
+              placeholder="What would you like to discuss?"
+            />
+          </Form.Item>
+
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              size="large"
+              block
+              icon={<SendOutlined />}
+            >
+              Send Message
+            </Button>
+          </Form.Item>
+        </Form>
+      </motion.div>
     </section>
   );
 }

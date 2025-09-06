@@ -1,9 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Button, Typography, Space } from "antd";
+import { GithubOutlined, LinkedinOutlined, MailOutlined } from "@ant-design/icons";
+
+const { Title, Paragraph } = Typography;
 
 export default function Hero() {
   return (
-    <section id="home" className="min-h-[80vh] grid place-items-center">
+        <section id="home" className="min-h-[85vh] relative overflow-hidden bg-gradient-to-br from-sky-50 to-white dark:from-navy-900 dark:to-navy-800">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2 py-10">
         {/* Text */}
         <div className="order-2 md:order-1 flex flex-col justify-center">
@@ -13,7 +17,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold leading-tight"
           >
-            Hi, I’m <span className="text-[rgb(var(--primary))]">Junaid Shahpal</span>.
+            Hi, I’m <span className="text-[rgb(var(--primary))]">Husnain Mughal</span>.
             <br /> I build delightful web experiences.
           </motion.h1>
           <motion.p
