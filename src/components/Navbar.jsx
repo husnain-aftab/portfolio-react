@@ -30,12 +30,7 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a 
-            href="/resume.pdf" 
-            className="px-6 py-2 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white rounded-lg font-medium shadow-lg shadow-sky-500/20 hover:scale-105 transition-all duration-300"
-            target="_blank" 
-            rel="noreferrer"
-          >
+       
             Resume
           </a>
           <ThemeToggle />
