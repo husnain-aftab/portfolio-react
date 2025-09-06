@@ -24,7 +24,12 @@ export default function Contact() {
         viewport={{ once: true }}
         className="max-w-xl mx-auto"
       >
-       
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={onFinish}
+          className="p-8 rounded-lg shadow-md bg-gradient-to-br from-sky-50 to-white dark:from-navy-900 dark:to-navy-800 dark:bg-opacity-90"
+        >
           <Form.Item
             name="name"
             label="Name"

@@ -17,6 +17,10 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold leading-tight"
           >
+
+
+
+            
             Hi, I’m <span className="text-[rgb(var(--primary))]">Husnain Mughal</span>.
             <br /> I build delightful web experiences.
           </motion.h1>
